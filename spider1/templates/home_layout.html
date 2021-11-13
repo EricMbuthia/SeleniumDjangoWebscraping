@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    {% block title %}
+                    {% endblock %}
+        {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+	
+	<!-- Font Awesome-->
+	<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+
+	<!-- Pace -->
+	<link href="{% static 'css/pace.css' %}" rel="stylesheet">
+	
+	<!-- Datatable -->
+	<link href="{% static 'css/jquery.dataTables_themeroller.css' %}" rel="stylesheet">
+	
+	<!-- Endless -->
+	<link href="{% static 'css/endless.min.css' %}" rel="stylesheet">
+	<link href="{% static 'css/endless-skin.css' %}" rel="stylesheet">
+	
+  </head>
+
+  <body class="pace-done">
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<div id ="wrapper">
+
+
+
+
+
+
+
+
+
+	<aside class="fixed skin-6">			
+		<div class="sidebar-inner scrollable-sidebar">
+			<div class="size-toggle">
+				<a class="btn btn-sm" id="sizeToggle">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="btn btn-sm pull-right logoutConfirm_open"  href="#logoutConfirm">
+					<i class="fa fa-power-off"></i>
+				</a>
+			</div><!-- /size-toggle -->	
+			<div class="user-block clearfix">
+				<img src="img/user.jpg" alt="User Avatar">
+				<div class="detail">
+					<strong>John Doe</strong><span class="badge badge-danger bounceIn animation-delay4 m-left-xs">4</span>
+					<ul class="list-inline">
+						<li><a href="profile.html">Profile</a></li>
+						<li><a href="inbox.html" class="no-margin">Inbox</a></li>
+					</ul>
+				</div>
+			</div><!-- /user-block -->
+			<div class="search-block">
+				<div class="input-group">
+					<input type="text" class="form-control input-sm" placeholder="search here...">
+					<span class="input-group-btn">
+						<button class="btn btn-default btn-sm" type="button"><i class="fa fa-search"></i></button>
+					</span>
+				</div><!-- /input-group -->
+			</div><!-- /search-block -->
+			<div class="main-menu">
+				<ul>
+
+					<li>
+						<a href="{% url 'spider1:home' %}">
+							<span class="menu-icon">
+								<i class="fa fa-desktop fa-lg"></i> 
+							</span>
+							<span class="text">
+								Home
+							</span>
+							<span class="menu-hover"></span>
+						</a>
+					</li>
+					<!-- <li>
+						<a href="{% url 'spider1:create_db_notice' %}">
+							<span class="menu-icon">
+								<i class="fa fa-desktop fa-lg"></i> 
+							</span>
+							<span class="text">
+								Create New Notice
+							</span>
+							<span class="menu-hover"></span>
+						</a>
+					</li>
+					<li>
+						<a href="{% url 'spider1:create_db_notice' %}">
+							<span class="menu-icon">
+								<i class="fa fa-desktop fa-lg"></i> 
+							</span>
+							<span class="text">
+								Home
+							</span>
+							<span class="menu-hover"></span>
+						</a>
+					</li> -->
+
+				</ul>
+				
+				<div class="alert alert-info">
+					Welcome to Endless Admin. Do not forget to check all my pages. 
+				</div>
+			</div><!-- /main-menu -->
+		</div><!-- /sidebar-inner scrollable-sidebar -->
+	</aside>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id = "main-container">
+<div class = "padding-md">
+	{% block content %}
+    {% endblock %}
+</div>
+</div>
+</div>
+    
+
+
+
+	<!-- Jquery -->
+	<script src="{% static 'js/jquery-1.10.2.min.js' %}"></script>
+	
+		<!-- Bootstrap -->
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+ 
+	<!-- Datatable -->
+	<script src="{% static 'js/jquery.dataTables.min.js' %}"></script>	
+	
+
+	
+	<!-- Modernizr -->
+	<script src="{% static 'js/modernizr.min.js' %}"></script>
+	
+	<!-- Pace -->
+	<script src="{% static 'js/pace.min.js' %}"></script>
+	
+	<!-- Popup Overlay -->
+	<script src= "{% static 'js/jquery.popupoverlay.min.js' %}"></script>
+	
+	 <!-- Slimscroll -->
+	<script src="{% static 'js/jquery.slimscroll.min.js' %}"></script>
+	
+	<!-- Cookie -->
+	<script src="{% static 'js/jquery.cookie.min.js' %}"></script>
+
+	<!-- Endless -->
+	<script src="{% static 'js/endless/endless.js' %}"></script>
+	<script src="{% static 'js/endless/endless.js' %}"></script>
+	<script src="{% static 'js/scraper_nyc.js' %}"></script>
+
+	
+	<script>
+		$(function	()	{
+			$('#dataTable').dataTable( {
+				"bJQueryUI": true,
+				"sPaginationType": "full_numbers"
+			});
+			
+			$('#chk-all').click(function()	{
+				if($(this).is(':checked'))	{
+					$('#responsiveTable').find('.chk-row').each(function()	{
+						$(this).prop('checked', true);
+						$(this).parent().parent().parent().addClass('selected');
+					});
+				}
+				else	{
+					$('#responsiveTable').find('.chk-row').each(function()	{
+						$(this).prop('checked' , false);
+						$(this).parent().parent().parent().removeClass('selected');
+					});
+				}
+			});
+		});
+	</script>
+	
+  </body>
+</html>

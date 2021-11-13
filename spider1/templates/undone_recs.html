@@ -1,0 +1,61 @@
+{% extends 'home_layout.html' %}
+
+{% block title %}
+Undone Records
+				{% endblock %}
+{% block content %}
+
+    {% if undone_notices_errors %}
+    <div class="alert alert-danger alert-dismissable">
+      <button aria-hidden="true" data-dismiss="alert" class="close" type="button"> × </button>
+      Error ! Try again please. </div>
+  
+                      {% endif %}
+ <div id ="my_alert_box"></div>
+ <a href = "{% url 'spider1:handle_undone_notices' undone_notices.id %}" id ="handle_undone_notices"class="btn btn-danger btn-md">Handle Undone</a>
+ {{undone_notices.id}}
+<div class="panel panel-default table-responsive">
+    <div class="panel-heading">
+        Data Table
+        <span class="label label-info pull-right">790 Items</span>
+    </div>
+    <div class="padding-md clearfix">
+        <table class="table table-striped" id="dataTable">
+            <thead>
+                <tr>
+                    <!-- <th>No</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Sales</th>
+                    <th>Date</th>
+                    <th>Status</th> -->
+                    <th>Borough</th>
+                    <th>Block</th>
+                    <th>Lot</th>
+                    <th>Exception Type</th>
+                    <th>Billing Address</th>
+                    <th>Exception Time</th>
+                    <th>Scrape Rec</th>
+                    <th>Exception Info</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rec in undone_notices.undone_rec %}
+                <tr>
+                    <td>{{rec.borough}}</td>
+                    <td>{{rec.block}}</td>
+                    <td>{{rec.lot}}</td>
+                    <td>{{rec.exception_type}}</td>
+                    <td>{{rec.billing_address}}</td>
+                    <td>{{rec.time_exception}}</td>
+                    <td>{{rec.scrape_rec}}</td>
+                    <td>{{rec.exception_info}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div><!-- /.padding-md -->
+</div><!-- /panel -->
+
+{% endblock %}
